@@ -5,7 +5,8 @@
     },
     "extends": [
         "plugin:vue/vue3-essential",
-        "standard-with-typescript"
+        "standard-with-typescript",
+        "plugin:prettier/recommended"
     ],
     "overrides": [
     ],
@@ -15,7 +16,8 @@
         "project": "tsconfig.json"
     },
     "plugins": [
-        "vue"
+        "vue",
+        "prettier"
     ],
     "ignorePatterns": [".*", "dist"],
     "rules": {
