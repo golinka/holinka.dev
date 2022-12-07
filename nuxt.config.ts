@@ -1,14 +1,14 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  ssr: true,
-  modules: ['@nuxt/content'],
-  typescript: {
-    strict: true,
-    typeCheck: true
-  },
-  content: {
-    markdown: {
-      mdc: true
-    }
-  }
-})
+	ssr: true,
+	modules: ["@nuxt/content", "@nuxtjs/tailwindcss"],
+	typescript: {
+		strict: true,
+		typeCheck: true,
+	},
+	content: {
+		markdown: {
+			mdc: true,
+		},
+	},
+});
