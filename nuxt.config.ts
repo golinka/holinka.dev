@@ -4,11 +4,11 @@ export default defineNuxtConfig({
   modules: ['@nuxt/content'],
   typescript: {
     strict: true,
-    typeCheck: true,
+    typeCheck: true
   },
   content: {
     markdown: {
-      mdc: true,
-    },
+      mdc: true
+    }
   }
 })
