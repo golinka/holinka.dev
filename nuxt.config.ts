@@ -3,7 +3,7 @@ import { resolve } from "path";
 export default defineNuxtConfig({
 	ssr: true,
 	css: ["~/assets/scss/index.scss"],
-	modules: ["@nuxt/content", "@nuxtjs/tailwindcss", "nuxt-typed-router"],
+	modules: ["@nuxt/content", "@nuxtjs/tailwindcss", "nuxt-typed-router", "@nuxt/image-edge"],
 	typescript: {
 		strict: true,
 		typeCheck: true,
@@ -20,6 +20,9 @@ export default defineNuxtConfig({
 				},
 			},
 		},
+	},
+	image: {
+		dir: 'static/images'
 	},
 	content: {
 		markdown: {
