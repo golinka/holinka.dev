@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 const { $routesList } = useNuxtApp();
-const route = useRoute();
 
 const links: { name: string; routeName: string }[] = reactive([
 	{ name: "Home", routeName: $routesList.index },
@@ -9,8 +8,6 @@ const links: { name: string; routeName: string }[] = reactive([
 	{ name: "Experience", routeName: $routesList.experience },
 	{ name: "About", routeName: $routesList.about },
 ]);
-
-const activeRouteName = computed(() => route.name);
 </script>
 
 <template>
@@ -21,7 +18,6 @@ const activeRouteName = computed(() => route.name);
 					<NuxtLink
 						:to="{ name: link.routeName }"
 						class="header__navigation-link inline-block text-gray-800 px-3 py-2 rounded-lg hover:bg-gray-200 transition-all"
-						:class="{ 'header__navigation-link--active font-bold': activeRouteName === link.routeName }"
 					>
 						{{ link.name }}
 					</NuxtLink>
@@ -38,3 +34,15 @@ const activeRouteName = computed(() => route.name);
 		</div>
 	</header>
 </template>
+
+<style lang="scss">
+.header {
+	&__navigation {
+		&-link {
+			&.router-link-active {
+				@apply font-bold;
+			}
+		}
+	}
+}
+</style>

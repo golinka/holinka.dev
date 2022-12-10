@@ -3,7 +3,7 @@ import Header from "@/components/layout/Header.vue";
 </script>
 
 <template>
-	<Header></Header>
+	<Header class="mb-6"></Header>
 	<div class="container">
 		<slot></slot>
 	</div>
