@@ -20,17 +20,17 @@ const { $routesList } = useNuxtApp();
 			</div>
 		</div>
 		<div class="short-about-me__photo pl-5">
-			<NuxtImg src="/avatar.jpg" class="rounded-full"></NuxtImg>
+			<NuxtImg src="/avatar.jpg" class="rounded-full" loading="lazy"></NuxtImg>
 		</div>
 	</div>
 </template>
 
 <style lang="scss">
 .short-about-me {
-    &__photo {
-        img {
-            max-width: 200px;
-        }
-    }
+	&__photo {
+		img {
+			max-width: 200px;
+		}
+	}
 }
 </style>
