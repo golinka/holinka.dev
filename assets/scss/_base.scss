@@ -1,0 +1,7 @@
+body {
+    @apply bg-slate-100;
+}
+
+.container {
+	@apply md:max-w-2xl sm:max-w-full mx-auto;
+}
