@@ -1,7 +1,7 @@
 import { resolve } from "path";
 
 export default defineNuxtConfig({
-	ssr: true,
+	ssr: false,
 	app: {
 		head: {
 			link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.svg" }],
@@ -27,7 +27,7 @@ export default defineNuxtConfig({
 		},
 	},
 	image: {
-		dir: "public/images",
+		dir: "public",
 	},
 	content: {
 		markdown: {
