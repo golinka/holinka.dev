@@ -2,6 +2,11 @@ import { resolve } from "path";
 
 export default defineNuxtConfig({
 	ssr: true,
+	app: {
+		head: {
+			link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.svg" }],
+		},
+	},
 	css: ["~/assets/scss/index.scss"],
 	modules: ["@nuxt/content", "@nuxtjs/tailwindcss", "nuxt-typed-router", "@nuxt/image-edge"],
 	typescript: {
@@ -22,7 +27,7 @@ export default defineNuxtConfig({
 		},
 	},
 	image: {
-		dir: 'static/images'
+		dir: "public/images",
 	},
 	content: {
 		markdown: {
