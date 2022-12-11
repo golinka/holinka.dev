@@ -26,9 +26,6 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-	image: {
-		dir: "public",
-	},
 	content: {
 		markdown: {
 			mdc: true,
