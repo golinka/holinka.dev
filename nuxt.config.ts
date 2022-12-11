@@ -13,6 +13,14 @@ export default defineNuxtConfig({
 		strict: true,
 		typeCheck: true,
 	},
+	image: {
+		providers: {
+			customProvider: {
+				name: "static",
+				provider: "~/providers/static",
+			},
+		},
+	},
 	tailwindcss: {
 		config: {
 			content: ["./src/**/*.{vue,html,ts,js}"],
