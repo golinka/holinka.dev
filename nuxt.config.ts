@@ -4,6 +4,17 @@ export default defineNuxtConfig({
 	ssr: false,
 	app: {
 		head: {
+			title: "Artem Holinka - Frontend Developer",
+			viewport: "width=device-width, initial-scale=1",
+			meta: [
+				{ name: "description", content: `I have over ${new Date().getFullYear() - 2015} years of development experience and currently works as Frontend developer at JIJI. Also I write about JavaScript and other things related to WEB.` },
+				{ hid: "og-type", property: "og:type", content: "website" },
+				{ hid: "og-site_name", property: "og:type", content: "Artem Holinka" },
+				{ hid: "og-title", property: "og:title", content: "Artem Holinka - Frontend Developer" },
+				{ hid: "og-desc", property: "og:description", content: `I have over ${new Date().getFullYear() - 2015} years of development experience and currently works as Frontend developer at JIJI. Also I write about JavaScript and other things related to WEB.` },
+				{ hid: "og-image", property: "og:image", content: "https://holinka.dev/images/avatar.jpg" },
+				{ hid: "og-url", property: "og:url", content: 'https://holinka.dev' },
+			],
 			link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.svg" }],
 		},
 	},
