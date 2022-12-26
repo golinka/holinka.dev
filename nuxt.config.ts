@@ -3,10 +3,12 @@ import { resolve } from "path";
 const meta = {
 	siteName: "Artem Holinka",
 	title: "Artem Holinka - Frontend Developer",
-	description: `I have over ${new Date().getFullYear() - 2015} years of development experience and currently works as Frontend developer at JIJI. Also I write about JavaScript and other things related to WEB.`,
+	description: `I have over ${
+		new Date().getFullYear() - 2015
+	} years of development experience and currently works as Frontend developer at JIJI. Also I write about JavaScript and other things related to WEB.`,
 	image: "https://holinka.dev/images/avatar.jpg",
 	url: "https://holinka.dev",
-}
+};
 
 export default defineNuxtConfig({
 	ssr: false,
@@ -22,7 +24,7 @@ export default defineNuxtConfig({
 				{ hid: "og-desc", property: "og:description", content: meta.description },
 				{ hid: "og-image", property: "og:image", content: meta.image },
 				{ hid: "og-url", property: "og:url", content: meta.url },
-				{ hid: "twitter-card", property: "twitter:card", content: 'summary_large_image' },
+				{ hid: "twitter-card", property: "twitter:card", content: "summary_large_image" },
 				{ hid: "twitter-title", property: "twitter:title", content: meta.title },
 				{ hid: "twitter-description", property: "twitter:description", content: meta.description },
 				{ hid: "twitter-image", property: "twitter:image", content: meta.image },
@@ -31,7 +33,7 @@ export default defineNuxtConfig({
 		},
 	},
 	css: ["~/assets/scss/index.scss"],
-	modules: ["@nuxt/content", "@nuxtjs/tailwindcss", "nuxt-typed-router", "@nuxt/image-edge"],
+	modules: ["@nuxt/content", "@nuxtjs/tailwindcss", "nuxt-typed-router", "@nuxt/image-edge", "nuxt-icon"],
 	typescript: {
 		strict: true,
 		typeCheck: true,
