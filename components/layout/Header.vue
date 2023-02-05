@@ -1,30 +1,47 @@
 <script lang="ts" setup>
+import MenuButton from "@/components/common/MenuButton.vue";
+
 const { $routesList } = useNuxtApp();
 
-const links: { name: string; routeName: string }[] = reactive([
-	{ name: "Home", routeName: $routesList.index },
-	{ name: "Blog", routeName: $routesList.blog },
-	{ name: "Projects", routeName: $routesList.projects },
-	{ name: "Experience", routeName: $routesList.experience },
-	{ name: "About", routeName: $routesList.about },
+const isMenuCollapsed = ref(false);
+const links: { name: string; routeName: string; iconName: string }[] = reactive([
+	{ name: "Home", routeName: $routesList.index, iconName: "material-symbols:home-outline-rounded" },
+	{ name: "Blog", routeName: $routesList.blog, iconName: "material-symbols:article-outline-rounded" },
+	{ name: "Projects", routeName: $routesList.projects, iconName: "material-symbols:apps" },
+	{ name: "Experience", routeName: $routesList.experience, iconName: "material-symbols:work-outline" },
+	{ name: "About", routeName: $routesList.about, iconName: "material-symbols:person-outline" },
 ]);
 </script>
 
 <template>
-	<header class="header flex items-center justify-between py-8">
-		<nav class="header__navigation -ml-2">
-			<ul class="flex">
-				<li v-for="(link, index) in links" :key="index" class="mr-1 last:mr-0">
+	<header
+		class="group header flex h-[50px] items-center justify-between relative box-content -mx-2 py-8 px-2"
+		:class="{ 'is-collapsed': isMenuCollapsed }"
+	>
+		<nav
+			class="header__navigation fixed top-0 left-0 z-10 w-56 h-screen bg-gray-50 -translate-x-full group-[.is-collapsed]:translate-x-0 transition-transform duration-300 group-[.is-collapsed]:shadow-xl md:shadow-none md:h-auto md:transform-none md:bg-transparent md:w-auto md:static md:block md:-ml-2"
+		>
+			<ul class="flex flex-col h-full items-center justify-center md:flex-row md:h-auto">
+				<li v-for="(link, index) in links" :key="index" class="mr-1 last:mr-0 w-full md:w-auto">
 					<NuxtLink
 						:to="{ name: link.routeName }"
-						class="header__navigation-link inline-block text-gray-800 px-3 py-2 rounded-lg hover:bg-gray-200 transition-all"
+						class="header__navigation-link flex items-center w-full text-gray-800 md:inline-block md:w-auto px-6 md:px-3 py-2 rounded-lg hover:bg-gray-200 transition-all"
+						@click="isMenuCollapsed = false"
 					>
+						<Icon :name="link.iconName" size="1.25em" class="mr-4 md:!hidden" />
 						{{ link.name }}
 					</NuxtLink>
 				</li>
 			</ul>
 		</nav>
-		<div class="header__resume">
+		<div class="header__navigation-button block relative h-[50px] md:hidden">
+			<MenuButton
+				:isActive="isMenuCollapsed"
+				@click="isMenuCollapsed = !isMenuCollapsed"
+				class="group-[.is-collapsed]:fixed z-20"
+			/>
+		</div>
+		<div class="header__resume pr-2">
 			<button
 				type="button"
 				class="text-white py-2 px-4 rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-[length:200%] bg-pos-0 hover:bg-pos-100 transition-all ease-in-out duration-300 shadow-md shadow-indigo-500/50 hover:shadow-purple-500/50"
@@ -37,6 +54,8 @@ const links: { name: string; routeName: string }[] = reactive([
 
 <style lang="scss">
 .header {
+	box-sizing: content-box;
+
 	&__navigation {
 		&-link {
 			&.router-link-active {
