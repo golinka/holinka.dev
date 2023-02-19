@@ -1,0 +1,119 @@
+publish_mode: editorial_workflow
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+local_backend: true
+
+backend:
+  name: git-gateway
+  branch: master
+
+collections:
+  - label: "Categories"
+    name: "categories"
+    folder: "content/categories"
+    create: true
+    slug: "{{key}}"
+    identifier_field: "key"
+    fields:
+      - { label: "Name", name: "name", widget: "string", required: true }
+      - { label: "Key", name: "key", widget: "string", required: true }
+
+  - label: "Job types"
+    name: "job_types"
+    folder: "content/job_types"
+    create: true
+    slug: "{{label}}"
+    identifier_field: "value"
+    fields:
+      - { label: "Label", name: "label", widget: "string", required: true }
+      - { label: "Value", name: "value", widget: "string", required: true }
+
+  - name: "blog"
+    label: "Blog"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "default" }
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Image", name: "image", widget: "image", required: true }
+      - label: "Categories"
+        name: "categories"
+        widget: "list"
+        summary: "{{fields.image}}"
+        fields:
+          - {
+              label: "Category",
+              name: "name",
+              widget: "relation",
+              collection: "categories",
+              search_fields: ["name"],
+              value_field: "name",
+              display_fields: ["name"],
+            }
+      - { label: "Body", name: "body", widget: "markdown", required: true }
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        fields:
+          - { label: "Description", name: "description", widget: "string", required: true }
+          - { label: "Keywords", name: "keywords", widget: "list", allow_add: true, required: true }
+      - label: "Posted on"
+        name: "posted_on"
+        widget: "list"
+        fields:
+          - { label: "Logo", name: "logo", widget: "image" }
+          - { label: "Website", name: "website", widget: "string", required: true }
+          - { label: "Link", name: "link", widget: "string", required: true }
+      - {
+          label: "Created date",
+          name: "createdAt",
+          widget: "datetime",
+          format: "YYYY-MM-DD",
+          date_format: "YYYY-MM-DD",
+          time_format: false,
+          required: true,
+        }
+
+  - name: "experience"
+    label: "Experience"
+    folder: "content/experience"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "company"
+    fields:
+      - { label: "Position", name: "position", widget: "string", required: true }
+      - { label: "Logo", name: "logo", widget: "image", required: true }
+      - { label: "Company", name: "company", widget: "string", required: true }
+      - { label: "Sphere", name: "sphere", widget: "string", required: true }
+      - {
+          label: "Job type",
+          name: "job_type",
+          widget: "relation",
+          collection: "job_types",
+          search_fields: ["label"],
+          value_field: "value",
+          display_fields: ["label"],
+          required: true,
+        }
+      - { label: "Location", name: "location", widget: "string", required: true }
+      - { label: "Company website", name: "website", widget: "string" }
+      - {
+          label: "Date start",
+          name: "date_start",
+          widget: "datetime",
+          format: "YYYY-MM-DD",
+          date_format: "YYYY-MM-DD",
+          time_format: false,
+          required: true,
+        }
+      - {
+          label: "Date end",
+          name: "date_end",
+          widget: "datetime",
+          format: "YYYY-MM-DD",
+          date_format: "YYYY-MM-DD",
+          time_format: false,
+          required: true,
+        }
