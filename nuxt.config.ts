@@ -2,19 +2,18 @@ import { resolve } from "path";
 
 const meta = {
 	siteName: "Artem Holinka",
-	title: "Artem Holinka - Frontend Developer",
+	title: "Artem Holinka - Senior Front-end Engineer",
 	description: `I have over ${
 		new Date().getFullYear() - 2015
-	} years of development experience and currently works as Frontend developer at JIJI. Also I write about JavaScript and other things related to WEB.`,
+	} years of development experience and currently works as Senior Front-end Engineer at JIJI. Also I write about JavaScript and other things related to WEB.`,
 	image: "https://holinka.dev/images/avatar.jpg",
 	url: "https://holinka.dev",
 };
 
 export default defineNuxtConfig({
-	ssr: false,
 	app: {
 		head: {
-			title: "Artem Holinka - Frontend Developer",
+			title: "Artem Holinka - Senior Front-end Engineer",
 			viewport: "width=device-width, initial-scale=1",
 			meta: [
 				{ name: "description", content: meta.description },
@@ -65,7 +64,6 @@ export default defineNuxtConfig({
 		},
 	},
 	alias: {
-		"@": resolve(__dirname, "./"),
 		images: resolve(__dirname, "./assets/images"),
 	},
 	nuxtTypedRouter: {
