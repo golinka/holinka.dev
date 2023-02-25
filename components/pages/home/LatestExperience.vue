@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import LatestExperienceItem from "@/components/LatestExperienceItem.vue";
+import LatestExperienceItem from "~~/components/pages/home/LatestExperienceItem.vue";
 import SectionBlock from "@/components/layout/SectionBlock.vue";
 import { Experience } from "@/types/experience";
 

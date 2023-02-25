@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import SectionBlock from "@/components/layout/SectionBlock.vue";
-import ProjectsListItem from "@/components/ProjectsListItem.vue";
+import ProjectsListItem from "~~/components/pages/home/ProjectsListItem.vue";
 import { ShortProject } from "@/types/project";
 
 const { $routesList } = useNuxtApp();

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import LatestArticlesItem from "@/components/LatestArticlesItem.vue";
+import LatestArticlesItem from "~~/components/pages/home/LatestArticlesItem.vue";
 import SectionBlock from "@/components/layout/SectionBlock.vue";
-import { ShortArticle } from "@/types/article";
+import { LatestArticle } from "@/types/article";
 
 const { $routesList } = useNuxtApp();
 
-const latestArticles: ShortArticle[] = reactive([
+const latestArticles: LatestArticle[] = reactive([
 	{ title: "Use Vue.js Mixins In A Better Way", date: "November 10, 2022", url: "/blog/slug-to-article" },
 	{ title: "Use Vue.js Mixins In", date: "November 17, 2022", url: "/blog/slug-to-article" },
 	{

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { ShortArticle } from "@/types/article";
+import { LatestArticle } from "@/types/article";
 
 interface Props {
-	article: ShortArticle;
+	article: LatestArticle;
 }
 
 const { article } = defineProps<Props>();
