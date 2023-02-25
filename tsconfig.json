@@ -4,6 +4,8 @@
 	"compilerOptions": {
 		"strict": true,
 		"skipLibCheck": true,
-		"types": ["@nuxtjs/tailwindcss", "nuxt-typed-router"]
+		"types": ["@nuxtjs/tailwindcss", "nuxt-typed-router"],
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true
 	}
 }
