@@ -3,10 +3,8 @@ import { resolve } from "path";
 
 const meta = {
 	siteName: "Artem Holinka",
-	title: "Artem Holinka - Senior Front-end Engineer",
-	description: `I have over ${
-		new Date().getFullYear() - 2015
-	} years of development experience and currently works as Senior Front-end Engineer at JIJI. Also I write about JavaScript and other things related to WEB.`,
+	title: "Artem Holinka - Senior Front-end Developer",
+	description: `I am an experienced software engineer with extensive knowledge of front-end development, and deep expertise in Vue and Nuxt. Additionally, I have a passion for writing, with a particular focus on JavaScript and other topics related to web development.`,
 	image: "https://holinka.dev/images/avatar.jpg",
 	url: "https://holinka.dev",
 };
@@ -18,7 +16,7 @@ export default defineNuxtConfig({
 			htmlAttrs: {
 				lang: "en",
 			},
-			title: "Artem Holinka - Senior Front-end Engineer",
+			title: "Artem Holinka - Senior Front-end Developer",
 			viewport: "width=device-width, initial-scale=1",
 			meta: [
 				{ name: "description", content: meta.description },

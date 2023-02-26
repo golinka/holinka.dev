@@ -9,7 +9,7 @@ const emoji = computed(() => emojis[random(0, emojis.length - 1)]);
 </script>
 
 <template>
-	<footer class="footer flex items-center justify-between text-sm border-t border-t-gray-200 text-gray-500 py-8">
+	<footer class="footer flex items-center justify-between text-sm border-t border-t-gray-200 text-gray-500 py-5 px-2 md:py-8">
 		<div class="footer__copyright">
 			© {{ new Date().getFullYear() }}
 			<span class="ml-1">

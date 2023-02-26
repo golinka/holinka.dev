@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import MenuButton from "~~/components/base/BaseMenuButton.vue";
+import BaseMenuButton from "~~/components/base/BaseMenuButton.vue";
 
 const { $routesList } = useNuxtApp();
 
@@ -15,7 +15,7 @@ const links: { name: string; routeName: string; iconName: string }[] = reactive(
 
 <template>
 	<header
-		class="group header flex h-[50px] items-center justify-between relative box-content -mx-2 py-8 px-2"
+		class="group header flex h-[50px] items-center justify-between relative box-content -mx-2 px-2 py-5 md:py-8"
 		:class="{ 'is-collapsed': isMenuCollapsed }"
 	>
 		<nav
@@ -35,11 +35,11 @@ const links: { name: string; routeName: string; iconName: string }[] = reactive(
 			</ul>
 		</nav>
 		<div class="header__navigation-button block relative h-[50px] md:hidden">
-			<MenuButton
+			<BaseMenuButton
 				:isActive="isMenuCollapsed"
 				@click="isMenuCollapsed = !isMenuCollapsed"
 				class="group-[.is-collapsed]:fixed z-20"
-			/>
+			></BaseMenuButton>
 		</div>
 		<div class="header__resume pr-2">
 			<button

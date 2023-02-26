@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Badge from "~~/components/base/BaseBadge.vue";
+import BaseBadge from "~~/components/base/BaseBadge.vue";
 import { ShortProject } from "@/types/project";
 
 interface Props {
@@ -18,7 +18,12 @@ const { project } = defineProps<Props>();
 			{{ project.name }}
 		</NuxtLink>
 		<div class="project-list-item__badges flex items-center mb-3">
-			<Badge v-for="(badge, index) in project.badges" :key="index" :label="badge" class="mr-3 last:mr-0"></Badge>
+			<BaseBadge
+				v-for="(badge, index) in project.badges"
+				:key="index"
+				:label="badge"
+				class="mr-3 last:mr-0"
+			></BaseBadge>
 		</div>
 		<div class="project-list-item__description">
 			{{ project.description }}
