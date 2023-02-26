@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import MenuButton from "@/components/common/MenuButton.vue";
+import MenuButton from "~~/components/base/BaseMenuButton.vue";
 
 const { $routesList } = useNuxtApp();
 

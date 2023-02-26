@@ -1,17 +1,23 @@
 <script lang="ts" setup>
 import { ArticleQueryContent } from "@/types/article";
-import Badge from "@/components/common/Badge.vue";
+import Badge from "~~/components/base/BaseBadge.vue";
 
 interface Props {
 	article: ArticleQueryContent;
+	isShowDescription: boolean;
+	isShowCategories: boolean;
 }
 
-const { article } = defineProps<Props>();
+const { article, isShowDescription } = withDefaults(defineProps<Props>(), {
+	article: () => ({} as ArticleQueryContent),
+	isShowDescription: true,
+	isShowCategories: true,
+});
 </script>
 
 <template>
 	<div class="short-article-item">
-		<div class="short-article-item__categories flex mb-2">
+		<div v-if="isShowCategories" class="short-article-item__categories flex mb-2">
 			<Badge v-for="(badge, index) in article.categories" :key="index" :label="badge.name" class="mr-3 last:mr-0">
 			</Badge>
 		</div>
@@ -21,7 +27,7 @@ const { article } = defineProps<Props>();
 		>
 			{{ article.title }}
 		</NuxtLink>
-		<div class="latest-articles-item__description mb-2">
+		<div v-if="isShowDescription" class="latest-articles-item__description mb-2">
 			{{ article.description }}
 		</div>
 		<div class="latest-articles-item__date text-gray-400 text-sm">

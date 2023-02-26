@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Badge from "@/components/common/Badge.vue";
+import Badge from "~~/components/base/BaseBadge.vue";
 import { ShortProject } from "@/types/project";
 
 interface Props {
