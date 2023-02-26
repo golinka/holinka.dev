@@ -5,7 +5,7 @@ import LatestArticles from "~~/components/pages/home/LatestArticles.vue";
 import ProjectsList from "~~/components/pages/home/ProjectsList.vue";
 import LatestExperience from "~~/components/pages/home/LatestExperience.vue";
 
-const { data: articles } = await useAsyncData("blog", () => queryContent<ArticleQueryContent>("blog").find());
+const { data: articles } = await useAsyncData("blog", () => queryContent<ArticleQueryContent>("blog").limit(3).find());
 </script>
 
 <template>
