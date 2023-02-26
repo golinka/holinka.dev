@@ -1,11 +1,5 @@
 import { MarkdownParsedContent } from "@nuxt/content/dist/runtime/types";
 
-export type LatestArticle = {
-	title: string;
-	date: string;
-	url: string;
-};
-
 export type Article = {
 	title: string;
 	description: string;
