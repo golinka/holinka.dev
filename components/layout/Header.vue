@@ -44,7 +44,7 @@ const links: { name: string; routeName: string; iconName: string }[] = reactive(
 		<div class="header__resume pr-2">
 			<button
 				type="button"
-				class="text-white py-2 px-4 rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-[length:200%] bg-pos-0 hover:bg-pos-100 transition-all ease-in-out duration-300 shadow-md shadow-indigo-500/50 hover:shadow-purple-500/50"
+				class="text-white py-2 px-4 rounded-lg !bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-[length:200%] bg-pos-0 hover:bg-pos-100 transition-all ease-in-out duration-300 shadow-md shadow-indigo-500/50 hover:shadow-purple-500/50"
 			>
 				Resume
 			</button>
