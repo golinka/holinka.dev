@@ -6,12 +6,20 @@
 
 import { defineNuxtPlugin } from "#app";
 
-export default defineNuxtPlugin((nuxtApp) => {
-	const routesList = { about: "about", blog: "blog", experience: "experience", index: "index", projects: "projects" };
+export default defineNuxtPlugin(() => {
+	const router = useRouter();
+	const routesList = {
+		about: "about",
+		blogId: "blog-id",
+		blog: "blog",
+		experience: "experience",
+		index: "index",
+		projects: "projects",
+	};
 
 	return {
 		provide: {
-			typedRouter: nuxtApp.$router,
+			typedRouter: router as TypedRouter,
 			routesList,
 		},
 	};

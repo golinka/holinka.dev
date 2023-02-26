@@ -1,3 +1,4 @@
+import { defineNuxtConfig } from "nuxt/config";
 import { resolve } from "path";
 
 const meta = {
@@ -11,8 +12,12 @@ const meta = {
 };
 
 export default defineNuxtConfig({
+	extends: ["@nuxt-themes/typography"],
 	app: {
 		head: {
+			htmlAttrs: {
+				lang: "en",
+			},
 			title: "Artem Holinka - Senior Front-end Engineer",
 			viewport: "width=device-width, initial-scale=1",
 			meta: [
@@ -32,6 +37,7 @@ export default defineNuxtConfig({
 		},
 	},
 	css: ["~/assets/scss/index.scss"],
+	// @ts-ignore
 	modules: ["@nuxt/content", "@nuxtjs/tailwindcss", "nuxt-typed-router", "@nuxt/image-edge", "nuxt-icon"],
 	typescript: {
 		strict: true,
@@ -47,7 +53,11 @@ export default defineNuxtConfig({
 	},
 	tailwindcss: {
 		config: {
-			content: ["./src/**/*.{vue,html,ts,js}"],
+			content: [
+				"./components/**/*.{vue,html,ts,js}",
+				"./layouts/**/*.{vue,html,ts,js}",
+				"./pages/**/*.{vue,html,ts,js}",
+			],
 			theme: {
 				extend: {
 					backgroundPosition: {
@@ -61,6 +71,12 @@ export default defineNuxtConfig({
 	content: {
 		markdown: {
 			mdc: true,
+		},
+		highlight: {
+			theme: {
+				dark: "github-dark",
+				default: "github-light",
+			},
 		},
 	},
 	alias: {

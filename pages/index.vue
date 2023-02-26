@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import ShortAboutMe from "@/components/ShortAboutMe.vue";
-import LatestArticles from "@/components/LatestArticles.vue";
-import ProjectsList from "@/components/ProjectsList.vue";
-import LatestExperience from "@/components/LatestExperience.vue";
+import ShortAboutMe from "~~/components/pages/home/ShortAboutMe.vue";
+import LatestArticles from "~~/components/pages/home/LatestArticles.vue";
+import ProjectsList from "~~/components/pages/home/ProjectsList.vue";
+import LatestExperience from "~~/components/pages/home/LatestExperience.vue";
 </script>
 
 <template>
