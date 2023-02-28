@@ -3,7 +3,7 @@ const links = ref([
 	{ icon: "uil:github", url: "https://github.com/golinka" },
 	{ icon: "uil:linkedin", url: "https://www.linkedin.com/in/artem-holinka/" },
 ]);
-const emojis = ["🫀", "☕️", "🧠", "🥤"];
+const emojis = ["🫀", "☕️", "🧠", "🥤", "🪄"];
 const random = (min: number, max: number) => Math.round(Math.random() * (max - min) + min);
 const emoji = computed(() => emojis[random(0, emojis.length - 1)]);
 </script>
