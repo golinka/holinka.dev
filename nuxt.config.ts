@@ -36,7 +36,7 @@ export default defineNuxtConfig({
 	},
 	css: ["~/assets/scss/index.scss"],
 	// @ts-ignore
-	modules: ["@nuxt/content", "@nuxtjs/tailwindcss", "nuxt-typed-router", "@nuxt/image-edge", "nuxt-icon"],
+	modules: ["@nuxt/content", "@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-icon"],
 	typescript: {
 		strict: true,
 		typeCheck: true,
@@ -79,8 +79,5 @@ export default defineNuxtConfig({
 	},
 	alias: {
 		images: resolve(__dirname, "./assets/images"),
-	},
-	nuxtTypedRouter: {
-		outDir: "./.generated",
 	},
 });

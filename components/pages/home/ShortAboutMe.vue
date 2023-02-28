@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { $routesList } = useNuxtApp();
+import { RoutesNames } from "~~/types/router";
 </script>
 
 <template>
@@ -19,7 +19,7 @@ const { $routesList } = useNuxtApp();
 				Vue and Nuxt.
 			</div>
 			<div class="short-about-me__info-more">
-				<NuxtLink :to="{ name: $routesList.about }">Read more →</NuxtLink>
+				<NuxtLink :to="{ name: RoutesNames.ABOUT }">Read more →</NuxtLink>
 			</div>
 		</div>
 	</div>

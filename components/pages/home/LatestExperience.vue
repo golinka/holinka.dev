@@ -1,9 +1,8 @@
 <script lang="ts" setup>
+import { RoutesNames } from "~~/types/router";
+import { Experience } from "~~/types/experience";
 import LatestExperienceItem from "~~/components/pages/home/LatestExperienceItem.vue";
-import SectionBlock from "@/components/layout/SectionBlock.vue";
-import { Experience } from "@/types/experience";
-
-const { $routesList } = useNuxtApp();
+import SectionBlock from "~~/components/layout/SectionBlock.vue";
 
 const jobs: Experience[] = reactive([
 	{
@@ -34,7 +33,7 @@ const jobs: Experience[] = reactive([
 </script>
 
 <template>
-	<SectionBlock title="Experience" linkLabel="All experience" :link="$routesList.experience">
+	<SectionBlock title="Experience" linkLabel="All experience" :link="RoutesNames.EXPERIENCE">
 		<LatestExperienceItem
 			v-for="(job, index) in jobs"
 			:key="index"

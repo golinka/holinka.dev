@@ -1,15 +1,14 @@
 <script lang="ts" setup>
+import { RoutesNames } from "~~/types/router";
 import BaseMenuButton from "~~/components/base/BaseMenuButton.vue";
 
-const { $routesList } = useNuxtApp();
-
 const isMenuCollapsed = ref(false);
-const links: { name: string; routeName: string; iconName: string }[] = reactive([
-	{ name: "Home", routeName: $routesList.index, iconName: "material-symbols:home-outline-rounded" },
-	{ name: "Blog", routeName: $routesList.blog, iconName: "material-symbols:article-outline-rounded" },
-	{ name: "Projects", routeName: $routesList.projects, iconName: "material-symbols:apps" },
-	{ name: "Experience", routeName: $routesList.experience, iconName: "material-symbols:work-outline" },
-	{ name: "About", routeName: $routesList.about, iconName: "material-symbols:person-outline" },
+const links: { name: string; routeName: RoutesNames; iconName: string }[] = reactive([
+	{ name: "Home", routeName: RoutesNames.HOME, iconName: "material-symbols:home-outline-rounded" },
+	{ name: "Blog", routeName: RoutesNames.BLOG, iconName: "material-symbols:article-outline-rounded" },
+	{ name: "Projects", routeName: RoutesNames.PROJECTS, iconName: "material-symbols:apps" },
+	{ name: "Experience", routeName: RoutesNames.EXPERIENCE, iconName: "material-symbols:work-outline" },
+	{ name: "About", routeName: RoutesNames.ABOUT, iconName: "material-symbols:person-outline" },
 ]);
 </script>
 
