@@ -6,9 +6,9 @@ const isMenuCollapsed = ref(false);
 const links: { name: string; routeName: RoutesNames; iconName: string }[] = reactive([
 	{ name: "Home", routeName: RoutesNames.HOME, iconName: "material-symbols:home-outline-rounded" },
 	{ name: "Blog", routeName: RoutesNames.BLOG, iconName: "material-symbols:article-outline-rounded" },
-	{ name: "Projects", routeName: RoutesNames.PROJECTS, iconName: "material-symbols:apps" },
-	{ name: "Experience", routeName: RoutesNames.EXPERIENCE, iconName: "material-symbols:work-outline" },
-	{ name: "About", routeName: RoutesNames.ABOUT, iconName: "material-symbols:person-outline" },
+	// { name: "Projects", routeName: RoutesNames.PROJECTS, iconName: "material-symbols:apps" },
+	// { name: "Experience", routeName: RoutesNames.EXPERIENCE, iconName: "material-symbols:work-outline" },
+	// { name: "About", routeName: RoutesNames.ABOUT, iconName: "material-symbols:person-outline" },
 ]);
 </script>
 
@@ -40,7 +40,7 @@ const links: { name: string; routeName: RoutesNames; iconName: string }[] = reac
 				class="group-[.is-collapsed]:fixed z-20"
 			></BaseMenuButton>
 		</div>
-		<div class="header__resume pr-2">
+		<div class="header__resume hidden pr-2">
 			<button
 				type="button"
 				class="text-white py-2 px-4 rounded-lg !bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-[length:200%] bg-pos-0 hover:bg-pos-100 transition-all ease-in-out duration-300 shadow-md shadow-indigo-500/50 hover:shadow-purple-500/50"
