@@ -1,0 +1,4 @@
+---
+label: Contract
+value: contract
+---
