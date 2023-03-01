@@ -1,23 +1,3 @@
-<template>
-	<NuxtLayout name="default">
-		<ContentDoc>
-			<template #empty>
-				<article>
-					<p>No content found.</p>
-				</article>
-			</template>
-
-			<template #default="{ doc }">
-				<article class="prose">
-					<ProseH1 id="Heading">{{ doc.title }}</ProseH1>
-					<ProseImg v-if="doc.image" :src="doc.image" :alt="doc.title"></ProseImg>
-					<ContentRenderer :value="doc" />
-				</article>
-			</template>
-		</ContentDoc>
-	</NuxtLayout>
-</template>
-
 <script setup lang="ts">
 import { ArticleQueryContent } from "~~/types/article";
 
@@ -40,3 +20,23 @@ if (article.value) {
 	});
 }
 </script>
+
+<template>
+	<NuxtLayout name="default">
+		<ContentDoc>
+			<template #empty>
+				<article>
+					<p>No content found.</p>
+				</article>
+			</template>
+
+			<template #default="{ doc }">
+				<article class="prose">
+					<ProseH1 id="Heading">{{ doc.title }}</ProseH1>
+					<ProseImg v-if="doc.image" :src="doc.image" :alt="doc.title"></ProseImg>
+					<ContentRenderer :value="doc" />
+				</article>
+			</template>
+		</ContentDoc>
+	</NuxtLayout>
+</template>
