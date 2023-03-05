@@ -8,7 +8,7 @@ const links: { name: string; routeName: RoutesNames; iconName: string }[] = reac
 	{ name: "Blog", routeName: RoutesNames.BLOG, iconName: "material-symbols:article-outline-rounded" },
 	// { name: "Projects", routeName: RoutesNames.PROJECTS, iconName: "material-symbols:apps" },
 	// { name: "Experience", routeName: RoutesNames.EXPERIENCE, iconName: "material-symbols:work-outline" },
-	// { name: "About", routeName: RoutesNames.ABOUT, iconName: "material-symbols:person-outline" },
+	{ name: "About", routeName: RoutesNames.ABOUT, iconName: "material-symbols:person-outline" },
 ]);
 </script>
 
@@ -20,18 +20,20 @@ const links: { name: string; routeName: RoutesNames; iconName: string }[] = reac
 		<nav
 			class="header__navigation fixed top-0 left-0 z-10 w-56 h-screen bg-gray-50 -translate-x-full group-[.is-collapsed]:translate-x-0 transition-transform duration-300 group-[.is-collapsed]:shadow-xl md:shadow-none md:h-auto md:transform-none md:bg-transparent md:w-auto md:static md:block md:-ml-2"
 		>
-			<ul class="flex flex-col h-full items-center justify-center md:flex-row md:h-auto">
-				<li v-for="(link, index) in links" :key="index" class="mr-1 last:mr-0 w-full md:w-auto">
-					<NuxtLink
-						:to="{ name: link.routeName }"
-						class="header__navigation-link flex items-center w-full text-gray-800 md:inline-block md:w-auto px-6 md:px-3 py-2 rounded-lg hover:bg-gray-200 transition-all"
-						@click="isMenuCollapsed = false"
-					>
-						<Icon :name="link.iconName" size="1.25em" class="mr-4 md:!hidden" />
-						{{ link.name }}
-					</NuxtLink>
-				</li>
-			</ul>
+			<ClientOnly fallback-tag="ul" fallback="">
+				<ul class="flex flex-col h-full items-center justify-center md:flex-row md:h-auto">
+					<li v-for="(link, index) in links" :key="index" class="mr-1 last:mr-0 w-full md:w-auto">
+						<NuxtLink
+							:to="{ name: link.routeName }"
+							class="header__navigation-link flex items-center w-full text-gray-800 md:inline-block md:w-auto px-6 md:px-3 py-2 rounded-lg hover:bg-gray-200 transition-all"
+							@click="isMenuCollapsed = false"
+						>
+							<Icon :name="link.iconName" size="1.25em" class="mr-4 md:!hidden" />
+							{{ link.name }}
+						</NuxtLink>
+					</li>
+				</ul>
+			</ClientOnly>
 		</nav>
 		<div class="header__navigation-button block relative h-[50px] md:hidden">
 			<BaseMenuButton
