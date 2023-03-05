@@ -9,8 +9,8 @@ const jobs: Experience[] = reactive([
 		position: "Frontend Developer",
 		company: "WalletFactory",
 		sphere: "Fintech",
-		logoUrl: "/images/avatar.jpg",
-		jobType: 'full-time',
+		logoUrl: "/images/avatar.webp",
+		jobType: "full-time",
 		dateStart: "11.01.2019",
 		dateEnd: "03.01.2021",
 		duration: "1 year",
@@ -21,8 +21,8 @@ const jobs: Experience[] = reactive([
 		position: "Frontend Developer",
 		company: "WalletFactory",
 		sphere: "Fintech",
-		logoUrl: "/images/avatar.jpg",
-		jobType: 'full-time',
+		logoUrl: "/images/avatar.webp",
+		jobType: "full-time",
 		dateStart: "11.01.2019",
 		dateEnd: "03.01.2021",
 		duration: "1 year",
@@ -34,12 +34,7 @@ const jobs: Experience[] = reactive([
 
 <template>
 	<SectionBlock title="Experience" linkLabel="All experience" :link="RoutesNames.EXPERIENCE">
-		<LatestExperienceItem
-			v-for="(job, index) in jobs"
-			:key="index"
-			:job="job"
-			class="mb-5 last:mb-0"
-		>
+		<LatestExperienceItem v-for="(job, index) in jobs" :key="index" :job="job" class="mb-5 last:mb-0">
 		</LatestExperienceItem>
 	</SectionBlock>
 </template>

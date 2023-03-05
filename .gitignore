@@ -6,4 +6,5 @@ node_modules
 .output
 .generated
 .env
+.DS_Store
 dist
