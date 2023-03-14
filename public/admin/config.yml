@@ -11,7 +11,7 @@ backend:
 collections:
   - label: "Categories"
     name: "categories"
-    folder: "content/categories"
+    folder: "content/_categories"
     create: true
     slug: "{{key}}"
     identifier_field: "key"
@@ -21,7 +21,7 @@ collections:
 
   - label: "Job types"
     name: "job_types"
-    folder: "content/job_types"
+    folder: "content/_job_types"
     create: true
     slug: "{{label}}"
     identifier_field: "value"

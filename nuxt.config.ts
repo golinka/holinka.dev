@@ -19,6 +19,7 @@ export default defineNuxtConfig({
 			title: "Artem Holinka - Senior Front-end Developer",
 			viewport: "width=device-width, initial-scale=1",
 			meta: [
+				{ name: "charset", content: "UTF-8" },
 				{ name: "description", content: meta.description },
 				{ hid: "og-type", property: "og:type", content: "website" },
 				{ hid: "og-site_name", property: "og:site_name", content: meta.siteName },
@@ -35,6 +36,11 @@ export default defineNuxtConfig({
 		},
 	},
 	css: ["~/assets/scss/index.scss"],
+	nitro: {
+		prerender: {
+			routes: ["/sitemap.xml"],
+		},
+	},
 	// @ts-ignore
 	modules: ["@nuxt/content", "@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-icon"],
 	typescript: {
