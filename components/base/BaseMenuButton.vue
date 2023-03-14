@@ -7,7 +7,7 @@ const { isActive } = defineProps<Props>();
 </script>
 
 <template>
-	<button class="menu-button relative group" :class="{ 'is-active': isActive }">
+	<button class="menu-button relative group" :class="{ 'is-active': isActive }" aria-label="Open menu button">
 		<div
 			class="relative flex overflow-hidden items-center justify-center w-[50px] h-[50px] transform transition-all duration-200"
 		>

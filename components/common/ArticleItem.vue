@@ -34,7 +34,7 @@ const { article, isShowDescription } = withDefaults(defineProps<Props>(), {
 		<div v-if="isShowDescription" class="latest-articles-item__description mb-2">
 			{{ article.description }}
 		</div>
-		<div class="latest-articles-item__date text-gray-400 text-sm">
+		<div class="latest-articles-item__date text-gray-500 text-sm">
 			{{ $dayjs(article.createdAt).format("MMMM DD, YYYY") }}
 		</div>
 	</div>
