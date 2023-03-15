@@ -1,11 +1,10 @@
 import { serverQueryContent } from "#content/server";
 import { SitemapStream, streamToPromise } from "sitemap";
 
-const routes = ["/", "/blog", "/about"];
+const basicRoutes = [{ _path: "/", changefreq: "daily" }, { _path: "/blog", changefreq: "daily" }, { _path: "/about" }];
 
 export default defineEventHandler(async (event) => {
 	// Fetch all documents
-	const basicRoutes = routes.map((i) => ({ _path: i }));
 	const docsRoutes = await serverQueryContent(event).sort({ date: -1 }).where({ _partial: false }).find();
 
 	const sitemap = new SitemapStream({
@@ -15,7 +14,7 @@ export default defineEventHandler(async (event) => {
 	for (const route of [...docsRoutes, ...basicRoutes]) {
 		sitemap.write({
 			url: route._path,
-			changefreq: "monthly",
+			changefreq: route.changefreq || "monthly",
 		});
 	}
 
