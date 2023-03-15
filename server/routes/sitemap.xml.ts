@@ -1,7 +1,7 @@
 import { serverQueryContent } from "#content/server";
 import { SitemapStream, streamToPromise } from "sitemap";
 
-const routes = ["/", "about"];
+const routes = ["/", "/blog", "/about"];
 
 export default defineEventHandler(async (event) => {
 	// Fetch all documents
