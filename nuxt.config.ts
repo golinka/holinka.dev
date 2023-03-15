@@ -42,7 +42,14 @@ export default defineNuxtConfig({
 		},
 	},
 	// @ts-ignore
-	modules: ["@nuxt/content", "@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-icon"],
+	modules: ["@nuxt/content", "@nuxtjs/tailwindcss", "@nuxtjs/robots", "@nuxt/image-edge", "nuxt-icon"],
+	robots: {
+		rules: {
+			UserAgent: "*",
+			Disallow: "",
+			Sitemap: "https://holinka.dev/sitemap.xml",
+		},
+	},
 	typescript: {
 		strict: true,
 		typeCheck: true,
