@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const title = "Artem Holinka - All about me";
 const description =
-	"I'm a Senior Front-end Developer at JIJI. It's a Ukrainian 🇺🇦 product IT company that creates E-Commerce products in Africa.";
+	"I'm a Senior Frontend Developer at JIJI. It's a Ukrainian 🇺🇦 product IT company that creates E-Commerce products in Africa.";
 const image = "/images/me.webp";
 
 useServerSeoMeta({
@@ -25,7 +25,7 @@ useServerSeoMeta({
 			<ProseImg src="/images/me.webp"></ProseImg>
 			<ProseP> Hi there, I'm Artem 🖐.</ProseP>
 			<ProseP>
-				I'm a Senior Front-end Developer at <ProseA href="https://jiji.ng" blank>JIJI</ProseA>. It's a Ukrainian 🇺🇦
+				I'm a Senior Frontend Developer at <ProseA href="https://jiji.ng" blank>JIJI</ProseA>. It's a Ukrainian 🇺🇦
 				product IT company that creates E-Commerce products in Africa.
 			</ProseP>
 

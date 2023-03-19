@@ -10,12 +10,12 @@ import { RoutesNames } from "~~/types/router";
 		<div class="short-about-me__info flex-grow">
 			<div class="short-about-me__info-name text-4xl md:text-5xl font-bold mb-4">Artem Holinka</div>
 			<div class="short-about-me__info-position text-lg mb-3">
-				Senior Front-end Developer at
+				Senior Frontend Developer at
 				<NuxtLink to="https://jiji.ng" target="_blank" ref="noref" class="underline" aria-label="JIJI website">JIJI</NuxtLink>
 			</div>
 			<div class="short-about-me__info-description mb-5">
 				Hi there 🖐 🇺🇦 <br />
-				I am an experienced software engineer with extensive knowledge of front-end development, and deep expertise in
+				I am an experienced software engineer with extensive knowledge of frontend development, and deep expertise in
 				Vue and Nuxt.
 			</div>
 			<div class="short-about-me__info-more">
