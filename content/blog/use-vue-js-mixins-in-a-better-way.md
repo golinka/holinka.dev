@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Use Vue.js Mixins In A Better Way
-image: /images/uploads/1_sxrbw2-rgli-v7tkeiczwa.webp
+image: /images/uploads/mixins-article-poster.webp
 categories:
   - name: Experience
   - name: Vue
@@ -17,7 +17,7 @@ seo:
 posted_on: []
 createdAt: 2022-04-08
 ---
-Mixins are often used in projects to reuse some piece of business logic, but they have some uncertainties some nuances, which are more and more noticeable during project development. I faced them occasionally, and they cause difficulties with refactoring of a codebase or developing new features.
+Mixins are often used in projects to reuse some piece of business logic, but they have uncertainties and some nuances, which are more and more noticeable during project development. I faced them occasionally, and they cause difficulties with refactoring a codebase or developing new features.
 
 Before describing my approach, I’d like to go through the advantages and disadvantages of using mixins.
 
@@ -34,7 +34,7 @@ Before describing my approach, I’d like to go through the advantages and disad
 
 Disadvantages are not critical to avoid using mixins, but we should know them. I propose using the way based on these tricks to minimize them:
 
-* Use a prefix at the start of a method, getter, value, and props names. It shows what functionality a mixin relates to. Using this tip gives you the ability to separate easily component props and mixin ones. \
+* Use prefixes at the start of a method, getter, value, and props names. It shows what functionality a mixin relates to. Using this tip gives you the ability to separate easily component props and mixin ones. \
   For example: `$<mixinName>_<(prop|method|value)>`
 
   ```javascript
@@ -120,7 +120,7 @@ Disadvantages are not critical to avoid using mixins, but we should know them. I
 
 * Mixins methods or properties are conveniently used by IDE autocomplete.
 * Using a prefix avoids accidentally overwriting mixin methods and properties by methods of a component.
-* Transparency and convenient reading of component code by developers on big projects
+* Transparency and convenient reading of component code by developers on big projects.
 
 ## Conclusion
 
