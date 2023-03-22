@@ -11,6 +11,13 @@ const meta = {
 
 export default defineNuxtConfig({
 	extends: ["@nuxt-themes/typography"],
+	runtimeConfig: {
+		// Config exposed to the client-side
+		public: {
+			isProd: process.env.NODE_ENV === "production",
+			googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID,
+		},
+	},
 	app: {
 		head: {
 			htmlAttrs: {
@@ -42,16 +49,13 @@ export default defineNuxtConfig({
 		},
 	},
 	// @ts-ignore
-	modules: ["@nuxt/content", "@nuxtjs/tailwindcss", "@nuxtjs/robots", "@nuxt/image-edge", "nuxt-icon", "nuxt-gtag"],
+	modules: ["@nuxt/content", "@nuxtjs/tailwindcss", "@nuxtjs/robots", "@nuxt/image-edge", "nuxt-icon"],
 	robots: {
 		rules: {
 			UserAgent: "*",
 			Disallow: "",
 			Sitemap: "https://holinka.dev/sitemap.xml",
 		},
-	},
-	gtag: {
-		id: "G-TMT58V0P0Z",
 	},
 	typescript: {
 		strict: true,
