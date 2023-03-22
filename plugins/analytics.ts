@@ -6,9 +6,6 @@ export default defineNuxtPlugin((nuxtApp) => {
 		nuxtApp.vueApp.use(VueGtag, {
 			property: {
 				id: config.public.googleAnalyticsId,
-				params: {
-					send_page_view: true,
-				},
 			},
 		});
 		trackRouter(nuxtApp.$router);
