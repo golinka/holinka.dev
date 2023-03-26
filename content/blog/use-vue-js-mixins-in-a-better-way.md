@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Use Vue.js Mixins In A Better Way
+title: How to Use Vue.js Mixins In A Better Way
 image: /images/uploads/mixins-article-poster.webp
 categories:
   - name: Experience
@@ -17,7 +17,7 @@ seo:
 posted_on: []
 createdAt: 2022-04-08
 ---
-Mixins are often used in projects to reuse some piece of business logic, but they have uncertainties and some nuances, which are more and more noticeable during project development. I faced them occasionally, and they cause difficulties with refactoring a codebase or developing new features.
+Mixins are often used in projects to reuse some piece of business logic, but they have uncertainties and some nuances, which are more and more noticeable during project development. I faced them occasionally, and they caused difficulties in refactoring a codebase or developing new features.
 
 Before describing my approach, I’d like to go through the advantages and disadvantages of using mixins.
 
@@ -119,9 +119,11 @@ Disadvantages are not critical to avoid using mixins, but we should know them. I
 ## Advantages of the approach:
 
 * Mixins methods or properties are conveniently used by IDE autocomplete.
-* Using a prefix avoids accidentally overwriting mixin methods and properties by methods of a component.
+* Using a prefix avoids accidentally overwriting mixin methods and properties by component methods.
 * Transparency and convenient reading of component code by developers on big projects.
 
 ## Conclusion
 
 Mixin is a helpful tool but can make your project more complex, inflexible, and non-transparent on big projects. Using this approach is a good practice to keep a good developer experience and avoid disadvantages.
+
+*Many thanks for reading to the end. I hope it was useful for you.*
