@@ -6,10 +6,16 @@ categories:
   - name: Experience
   - name: Vue
 seo:
-  description: This article will show you the approach, that is a good practice to
-    keep a good developer experience and avoid disadvantages.
+  description: The article will show you how to use vue.js mixins in a better way,
+    and good practice approach to get a better developer experience and avoid
+    disadvantages.
   keywords:
+    - how to use vue.js mixins
+    - approach of using vue.js mixins
+    - vue.js mixins
+    - vue mixins
     - vue
+    - vue.js
     - mixins
     - javascript
     - experience
