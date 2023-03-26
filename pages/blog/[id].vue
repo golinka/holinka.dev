@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useServerHead } from "unhead";
 import { ArticleQueryContent } from "~~/types/article";
 
 const route = useRoute();
@@ -6,16 +7,25 @@ const route = useRoute();
 const { data: article } = await useAsyncData("blog", () => queryContent<ArticleQueryContent>(route.path).findOne());
 
 if (article.value) {
+	useServerHead({
+		meta: [
+			{
+				hid: "keywords",
+				name: "keywords",
+				keywords: (article.value.seo.keywords || []).join(", "),
+			},
+		],
+	});
 	useServerSeoMeta({
 		title: article.value.title,
+		description: article.value.seo.description,
 		ogType: "article",
 		ogTitle: article.value.title,
-		description: article.value.description,
-		ogDescription: article.value.description,
+		ogDescription: article.value.seo.description,
 		ogImage: article.value.image,
 		twitterCard: "summary_large_image",
 		twitterTitle: article.value.title,
-		twitterDescription: article.value.description,
+		twitterDescription: article.value.seo.description,
 		twitterImage: article.value.image,
 	});
 }
