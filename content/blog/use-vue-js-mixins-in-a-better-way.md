@@ -6,9 +6,8 @@ categories:
   - name: Experience
   - name: Vue
 seo:
-  description: The article will show you how to use vue.js mixins in a better way,
-    and good practice approach to get a better developer experience and avoid
-    disadvantages.
+  description: The article will show you how to use vue.js mixins to have a better
+    developer experience and avoid troubles with this.
   keywords:
     - how to use vue.js mixins
     - approach of using vue.js mixins
@@ -19,6 +18,7 @@ seo:
     - mixins
     - javascript
     - experience
+    - better way
     - codestyle
 posted_on: []
 createdAt: 2022-04-08
@@ -132,4 +132,4 @@ Disadvantages are not critical to avoid using mixins, but we should know them. I
 
 Mixin is a helpful tool but can make your project more complex, inflexible, and non-transparent on big projects. Using this approach is a good practice to keep a good developer experience and avoid disadvantages.
 
-*Many thanks for reading to the end. I hope it was useful for you.*
+I hope it was useful for you 🙌.
