@@ -12,20 +12,20 @@ if (article.value) {
 			{
 				hid: "keywords",
 				name: "keywords",
-				keywords: (article.value.seo.keywords || []).join(", "),
+				keywords: (article.value?.seo?.keywords || []).join(", "),
 			},
 		],
 	});
 	useServerSeoMeta({
 		title: article.value.title,
-		description: article.value.seo.description,
+		description: article.value?.seo?.description,
 		ogType: "article",
 		ogTitle: article.value.title,
-		ogDescription: article.value.seo.description,
+		ogDescription: article.value?.seo?.description,
 		ogImage: article.value.image,
 		twitterCard: "summary_large_image",
 		twitterTitle: article.value.title,
-		twitterDescription: article.value.seo.description,
+		twitterDescription: article.value?.seo?.description,
 		twitterImage: article.value.image,
 	});
 }
