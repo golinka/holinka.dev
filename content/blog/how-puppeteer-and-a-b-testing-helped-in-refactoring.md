@@ -7,23 +7,26 @@ categories:
   - name: A/B Testing
   - name: Experience
 seo:
-  description: I used Puppeteer and A/B tests to check my assumption and safely
-    run it on production
+  description: How I used Puppeteer and A/B tests to check my assumption and
+    safely run it on production
   keywords:
     - puppeteer
+    - puppeteer examples
     - a/b
+    - a/b testing
+    - how to use a/b testing
     - testing
     - performance
+    - performance improving
     - vue.js
     - mixins
-    - scroll
-    - handling
+    - scroll handling
     - IntersactionObserver
+    - IntersactionObserver examples
     - observer
-    - ""
-createdAt: 2023-03-27
+createdAt: 2023-04-03
 ---
-During features development, I highlighted using a scroll handler for the collecting of user impressions on the category listing. The scroll handler was used for checking the existence of a listing item in the user viewport.
+During a feature development, I saw that our impression analytics mixin was using a scroll listener for checking the existence of a listing item in the user viewport.
 
 ```typescript
 // Imports and consts
@@ -33,37 +36,13 @@ export default class ImpressionMixinOld extends Vue {
   // Here props and data...
   
   $impressionsMixin_addScrollHandler(): void {
-    this.$impressionsMixin_throttledOnscrollFunction = throttle(this.$impressionsMixin_logImpressionIfElementOnViewport, THROTTLE_DELAY)
+    this.$impressionsMixin_throttledOnscrollFunction = throttle(this.$impressionsMixin_logImpression, THROTTLE_DELAY)
 
     window.addEventListener(`scroll`, this.$impressionsMixin_throttledOnscrollFunction || (() => ({})))
   }
 
   $impressionsMixin_removeScrollHandler(): void {
     window.removeEventListener(`scroll`, this.$impressionsMixin_throttledOnscrollFunction || (() => ({})))
-  }
-  
-  $impressionsMixin_checkElementOnViewport(node: HTMLElement): boolean {
-    if (!node || !node.getBoundingClientRect) { return false }
-    const rect = node.getBoundingClientRect()
-
-    return rect.top >= 0 &&
-           rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-           rect.left >= 0 &&
-           rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  }
-
-  $impressionsMixin_logImpressionIfElementOnViewport(): void {
-    if (this.$impressionsMixin_timeout) {
-      clearTimeout(this.$impressionsMixin_timeout)
-    }
-
-    this.$impressionsMixin_timeout = setTimeout(() => {
-        const isInViewport = this.$impressionsMixin_checkElementOnViewport(this.$el as HTMLElement)
-
-        if ((isInViewport && !this.$impressionsMixin_eventObject) || (!isInViewport && this.$impressionsMixin_eventObject)) {
-            this.$impressionsMixin_logImpression()
-        }
-    }, DELAY_BEFORE_LOG_IMPRESSION)
   }
     
   // Rest of the mixin...
@@ -72,11 +51,17 @@ export default class ImpressionMixinOld extends Vue {
 
 > *Why mixin methods names have the strange naming format you can read in this [article](https://holinka.dev/blog/use-vue-js-mixins-in-a-better-way).*
 
-I faced many cases of using scroll handlers and I underscored for myself the deterioration of performance after choosing this strategy of feature implementation. Having experience with IntersactionObserver helped me with the finding of a better solution to check the existence of an element on the user’s viewport. Replacing the scroll handler with [IntersactionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) should reduce the Scripting time on the page and improve the performance.
+Listing is a page where you see a list of advertisements:
+
+![A listing with advertisements](/images/uploads/jiji-listing.webp "A listing with advertisements")
+
+The listing has an infinity scroll as a type of pagination and each item on the page uses the analytics. At that moment, it meant that as much user scroll as many scroll listeners are used for cracking items. It could lead to poor performance.
+
+Having experience with [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) helped me with the finding of a better solution for checking the existence of an element on the user’s viewport. Replacing the scroll handler with IntersectionObserver should reduce the Scripting time on the page and improve the performance.
 
 ![The performance tab with highlighting the Scripting time](/images/uploads/screenshot-of-the-performance-tab.webp "The performance tab with highlighting the Scripting time")
 
-I made a new version of the analytics with the refactoring of the viewport checking part:
+I made a new version of the analytics. I refactored the part of a viewport checking:
 
 ```typescript
 // Imports and consts
@@ -103,11 +88,11 @@ export default class ImpressionMixinNew extends Vue {
     return {
       el: node,
       rootMargin: `0px 0px 0px 0px`,
-      callback: this.$impressionsMixin_logImpressionIfElementOnViewport
+      callback: this.$impressionsMixin_logImpression
     }
   }
 
-  $impressionsMixin_setIntersectionObserver(options: ObserverMixinOptions): CacheObserver | null {
+  $impressionsMixin_setIntersectionObserver(options: ObserverOptions): CacheObserver | null {
     if (!options.el) { return null }
 
     const observer = new IntersectionObserver(() => options.callback(options), {
@@ -124,30 +109,6 @@ export default class ImpressionMixinNew extends Vue {
       observer
     }
   }
-
-  $impressionsMixin_logImpressionIfElementOnViewport(): void {
-    if (this.$impressionsMixin_timeout) {
-      clearTimeout(this.$impressionsMixin_timeout)
-    }
-
-    this.$impressionsMixin_timeout = setTimeout(() => {
-      const isInViewport = this.$impressionsMixin_checkElementOnViewport(this.$el)
-
-      if ((isInViewport && !this.$impressionsMixin_eventObject) || (!isInViewport && this.$impressionsMixin_eventObject)) {
-        this.$impressionsMixin_logImpression()
-      }
-    }, DELAY_BEFORE_LOG_IMPRESSION)
-  }
-
-  $impressionsMixin_checkElementOnViewport(node: Element): boolean {
-    if (!node || !node.getBoundingClientRect) { return false }
-    const rect = node.getBoundingClientRect()
-
-    return rect.top >= 0 &&
-           rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-           rect.left >= 0 &&
-           rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  }
     
   // Rest of the mixin...
 }
@@ -158,13 +119,15 @@ Before releasing this change, I had to be sure of the next two things:
 * this refactoring really improves performance;
 * we have the same level of precision in tracking the impressions after refactoring;
 
-I had to convince a product manager that it was a valuable change. Changes in the listings are difficult to promote without justification because the listings are a key part of the marketplace. I decided to collect the performance data of the old and new versions to compare them.
+I had to convince a product manager that it was a valuable change. Changes in the listings are difficult to promote without justification because a listing is a key part of the marketplace. I decided to collect somehow the performance data of both versions to compare them.
 
 ## How I compared the performance of versions
 
 As impressions analytics collects data based on viewport checking, I had to find a way to always have the same scrolling behavior. After achieving this, I’d be sure that a different scroll behavior wouldn’t affect the performance metrics in any way.
 
-Previously, I did tasks that included automatization with Puppeteer, so I chose it for imitation of scrolling and automated collection of the performance data. Then, I wrote a code for this:
+Impression analytics collects data during user scrolling. I had to find a way to open the listing page, start to collect performance data, automatically scroll it with stops to log impressions, and collect performance metrics. I had to have the same scrolling behavior not to affect the metrics in any way.
+
+Previously, I have experience with Puppeteer, so I chose it for the implementation of automated scrolling and collection of performance metrics. Then, I wrote this code:
 
 ```javascript
 const puppeteer = require('puppeteer');
@@ -215,28 +178,30 @@ const autoScroll = async (page, scrolledHeight) => {
 })();
 ```
 
-I made a simple copy of the listing page and ran this code to show how it worked:
+Here is an example of running this code on the listing page:
 
-![The example of running Puppeteer script](/images/uploads/puppeteer-using-example.gif "The example of running Puppeteer script")
+![Running of the code on the listing page](/images/uploads/pupputeer-example-jiji-short-minified.gif "Running of the code on the listing page")
 
-The result of the running of this code was a `profile.json` file. The file I uploaded to the Performance tab of the Dev tools to see all metrics.
+The result of the running of the code was a `profile.json` file. The file I uploaded to the Performance tab of the Dev tools to see all metrics.
 
 ![Opening of the profile.json file on the Performance tab](/images/uploads/uploading-of-the-profile_json-file.gif "Opening of the profile.json file on the Performance tab")
 
-I ran the code ten times for both versions of the impressions analytics. I checked performance results for all of them and got average scripting time for both versions. Here is an example of comparing performance metrics:
+I ran the code ten times for each of the versions. I checked all results and got average scripting time for both versions. Here is an example of comparing performance metrics:
 
-![The example of performance data comparing the old and new versions](/images/uploads/screenshot-of-performance-metrics.png "The example of performance data comparing the old and new versions")
+![The example of performance data comparing the old and new versions](/images/uploads/screenshot-of-performance-metrics.webp "The example of performance data comparing the old and new versions")
 
-Finally, I got the difference between versions. It was **about** **20%**. I showed the results to my manager and got approval to release the new version.
+Finally, I got the difference in performance between versions. It was **about** **20%**. I showed the results to my manager and got approval to release the new version.
 
 ## How A/B tests helped with the release
 
-As I’ve already said, listing is the most important part of the marketplace, and getting the right analytics is crucial. Before releasing, I hid the new version under an A/B test flag. A/B tests are useful for comparing several versions in production. If the new version had a bug or wasn’t working correctly, I’d disable it on production, fix the bug, and release it again.
+As I’ve already said, the listing page is one the most important pages of the marketplace, and getting the right analytics for the page is crucial. The specificity of impression analytics is that I could test it only on production. Before releasing, I hid the new version under an A/B test flag. A/B tests are useful for checking hypotheses in production if you have analytics that gives the ability to get a better version of functionality.
 
-After a couple of months of running both versions, we saw that impressions and conversions kept the same level of precision in tracking. So, I removed the old version from the project. Also, using A/B tests was useful during development to get metrics for comparing versions on a dev server. I got metrics for the old version, then opened the flags admin panel and turned on a flag to enable the new one.
+In my case, it was useful because I could turn off the new version of analytics if it worked incorrectly. Then I would fix a bug and release it again and we would not lose all data of the analytics. Also, using A/B testing helped during comparing versions on a dev server. I got the old version metrics, then opened the flags admin panel and turned on a flag to enable the new one.
 
-## Conclusion
+After a couple of months of running both versions, we saw that impressions and conversions kept the same level of precision in tracking. So, I removed the old version from the project.
 
-I’m happy to have a bunch of tools that can help you complete challenging tasks like this. I used Puppeteer and A/B tests to check my assumption and safely run it on production. At first look, these tools don’t have the same sphere of using them together, so that is why doing this refactoring was interesting.
+## Summary
 
-Many thanks for reading to the end. I hope this article was useful for you.
+I’m happy to have a bunch of tools that can help you complete challenging tasks like this. I used Puppeteer and A/B tests to check my assumption and safely run and test it on production. These tools don’t have an obvious sphere of using them together, so that is why this refactoring was interesting.
+
+*More of my articles you can see [here](https://holinka.dev/blog/).*
