@@ -1,7 +1,22 @@
 body {
-    @apply bg-gray-50;
+	@apply bg-gray-50;
 }
 
 .container {
 	@apply md:max-w-2xl sm:max-w-full mx-auto px-2;
+}
+
+.background-animate {
+	background-size: 400%;
+	animation: AnimationName 5s ease infinite;
+}
+
+@keyframes AnimationName {
+	0%,
+	100% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
 }
