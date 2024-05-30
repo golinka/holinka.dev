@@ -3,7 +3,7 @@ import { serverQueryContent } from "#content/server";
 
 export default defineEventHandler(async (event) => {
 	// Fetch all documents
-	const docsRoutes = await serverQueryContent(event).sort({ date: -1 }).where({ _partial: false }).find();
+	const docsRoutes = await serverQueryContent(event).sort({ createdAt: -1 }).where({ _partial: false }).find();
 
 	const feed = new RSS({
 		title: "Artem Holinka - Blog",
