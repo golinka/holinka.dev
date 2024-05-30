@@ -21,15 +21,11 @@ seo:
 posted_on: []
 createdAt: 2024-05-30
 ---
-## Introduction
-
 Developers of client applications work with APIs daily. It is a good practice to standardize API responses depending on the success of operations or business logic. Typically, a response includes standard fields such as `status`, `error` and etc.
 
 With these standard fields, developers can react to the operation’s status and build further user interactions with the application. If the registration is successful, the form should be closed, and a success message should be displayed. However, validation errors should be shown in the form if the data is in the wrong format.
 
 This raises the question of how to conveniently, quickly, and flexibly describe response types in a project.
-
-
 
 ## The Problem I Encountered
 
@@ -137,8 +133,6 @@ export type AddUserSocialNetworkAsLoginMethod = ApiResponse<{
 }, { message: string }> | ApiRedirect<{ redirect_url: string }>
 ```
 
-
-
 ## Practical Difference
 
 Below is an example of types for the user profile and the response returned by the user profile update function.
@@ -215,8 +209,6 @@ In this case, everything works as expected:
 
 * TypeScript understands that for corresponding statuses, there will be corresponding standard fields.
 * It indicates that the `user` value might be `undefined` in all response types except the successful one. However, after checking the response's success, this value is not highlighted and is defined.
-
-
 
 ## Conclusion
 
