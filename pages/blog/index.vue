@@ -2,7 +2,7 @@
 import { ArticleQueryContent } from "@/types/article";
 import ArticleItem from "~~/components/common/ArticleItem.vue";
 
-const { data: articles } = await useAsyncData("blog", () => queryContent<ArticleQueryContent>("blog").find());
+const { data: articles } = await useAsyncData("blog", () => queryContent<ArticleQueryContent>("blog").sort({ createdAt: -1 }).find());
 </script>
 
 <template>
