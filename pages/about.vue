@@ -45,8 +45,7 @@ useServerSeoMeta({
 			<ProseP>
 				In addition, I have several hobbies and areas of interest. Web development is one of my passions, and I feel
 				fortunate that it has become my profession 🥳. Apart from development, I enjoy traveling 🌎, playing and
-				watching football ⚽️ and table tennis 🏓, researching finance 💵, investments 📈, and economic processes 📊,
-				and keeping up-to-date with the latest news related to my interests.
+				watching football ⚽️ and table tennis 🏓.
 			</ProseP>
 
 			<ProseH2 id="find-or-contact">Find or contact me</ProseH2>
