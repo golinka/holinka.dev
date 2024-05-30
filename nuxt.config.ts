@@ -4,7 +4,7 @@ import { resolve } from "path";
 const meta = {
 	siteName: "Artem Holinka",
 	title: "Artem Holinka - Senior Frontend Developer",
-	description: `I am an experienced software engineer with extensive knowledge of frontend development, and deep expertise in Vue and Nuxt. Additionally, I have a passion for writing, with a particular focus on JavaScript and other topics related to web development.`,
+	description: `Welcome to my corner of the Web. I'm all about creating awesome frontend experiences, mostly playing around with Vue and Nuxt. Additionally, I have a passion for writing, with a particular focus on JavaScript and other topics related to web development. Have a look around and feel free to reach out!`,
 	image: "https://holinka.dev/images/avatar.webp",
 	url: "https://holinka.dev",
 };

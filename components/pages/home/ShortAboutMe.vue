@@ -14,9 +14,9 @@ import { RoutesNames } from "~~/types/router";
 				<NuxtLink to="https://jiji.ng" target="_blank" ref="noref" class="underline" aria-label="JIJI website">JIJI</NuxtLink>
 			</div>
 			<div class="short-about-me__info-description mb-5">
-				Hi there 🖐 🇺🇦 <br />
-				I am an experienced software engineer with extensive knowledge of frontend development, and deep expertise in
-				Vue and Nuxt.
+				Hey! 👋 🇺🇦 <br />
+				Welcome to my corner of the Web. I'm all about creating awesome frontend experiences, mostly playing around with Vue and Nuxt.
+				Have a look around and feel free to reach out!
 			</div>
 			<div class="short-about-me__info-more">
 				<NuxtLink :to="{ name: RoutesNames.ABOUT }" aria-label="Read more">Read more →</NuxtLink>
