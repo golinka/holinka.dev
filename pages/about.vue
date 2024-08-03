@@ -30,7 +30,7 @@ useServerSeoMeta({
 				I'm passionate about creating useful products for customers that are designed with attention to performance and security but also aligned with business goals.
 			</ProseP>
 			<ProseP>
-				Additionally, I had the opportunity to participate in developer competitions and hackathons,
+				Additionally, I had the opportunity to participate in international developer competitions and hackathons,
 				both as a participant and as a judge, which further expanded my technical experience and problem-solving skills.
 			</ProseP>
 
